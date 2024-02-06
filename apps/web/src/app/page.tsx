@@ -1,5 +1,5 @@
 import AddApplicationDrawer from "@/app/_components/add-application-drawer";
-import ApplicationList from "@/app/_components/applications-list";
+import ApplicationList from "@/app/_components/application-list";
 import {Suspense} from "react";
 
 export const dynamic = "force-dynamic";
