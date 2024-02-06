@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "private": true,
   "main": "src/index.ts",
@@ -48,7 +48,7 @@
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@vitest/ui": "^1.2.2",
     "bun-types": "latest",
-    "codegen-api": "*",
+    "codegen-api": "workspace:*",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-perfectionist": "^2.5.0",
