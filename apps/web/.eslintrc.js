@@ -1,9 +1,12 @@
-/** @type {import("eslint").Linter.Config} */
 module.exports = {
-  root: true,
-  extends: ["@repo/eslint-config/next.js"],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: true,
+  extends: ['next/core-web-vitals', 'plugin:perfectionist/recommended-natural'],
+  plugins: [
+    'perfectionist',
+    'prettier'
+  ],
+  rules: {
+    '@next/next/no-html-link-for-pages': ['error', './app/'],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'react-hooks/exhaustive-deps': 'off',
   },
-};
+}
