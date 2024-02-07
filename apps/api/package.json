@@ -5,6 +5,7 @@
   "private": true,
   "main": "src/index.ts",
   "scripts": {
+    "start": "bun src/index.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
