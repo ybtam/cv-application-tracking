@@ -1,5 +1,11 @@
 # web
 
+## 0.3.1
+
+### Patch Changes
+
+- lint: clean up
+
 ## 0.3.0
 
 ### Minor Changes
