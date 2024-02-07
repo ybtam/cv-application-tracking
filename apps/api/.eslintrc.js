@@ -6,16 +6,20 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:perfectionist/recommended-natural'
+    'plugin:perfectionist/recommended-natural',
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: [
+  'plugins': [
     '@typescript-eslint',
-    'perfectionist',
-    'prettier'
-  ]
+    'perfectionist'
+  ],
+  'rules': {
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+  }
 };
