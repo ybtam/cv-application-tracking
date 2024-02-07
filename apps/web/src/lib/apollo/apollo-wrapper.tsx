@@ -9,7 +9,8 @@ import {
   NextSSRInMemoryCache,
 } from '@apollo/experimental-nextjs-app-support/ssr'
 import React from 'react'
-import {createHttpLink} from "./link";
+
+import { createHttpLink } from './link'
 
 function makeClient(cookie?: RequestCookie): NextSSRApolloClient<NormalizedCacheObject> {
   const token = cookie ? `Bearer ${cookie.value}` : ''

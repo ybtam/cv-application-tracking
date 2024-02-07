@@ -4,6 +4,7 @@
 - added delete button
 - update query to only show non-deleted applications
 - fix: accept long urls
+- feat: docker files
 
 ## 06.02.2024
 - init project
