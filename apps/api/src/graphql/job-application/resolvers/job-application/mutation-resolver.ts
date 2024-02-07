@@ -48,4 +48,18 @@ export class JobApplicationMutationResolver {
 
     return jobApplication;
   }
+
+  @Mutation(() => Boolean)
+  async deleteJobApplication(
+    @Arg('id') id: string,
+    @Ctx() {em}: myContext
+  ) {
+    let jobApplication = await em.findOne(JobApplication, {id});
+    if (!jobApplication) throw new GraphQLError('Job application not found');
+
+    jobApplication.deletedAt = new Date();
+    await em.persistAndFlush(jobApplication);
+
+    return true;
+  }
 }
