@@ -6,6 +6,8 @@ import type {myContext} from "@/utils/create-server";
 export class JobApplicationQueryResolver{
   @Query(() => [JobApplication])
   async jobApplications(@Ctx() {em}: myContext) {
-    return await em.findAll(JobApplication);
+    return await em.find(JobApplication, {
+      deletedAt: null
+    });
   }
 }
