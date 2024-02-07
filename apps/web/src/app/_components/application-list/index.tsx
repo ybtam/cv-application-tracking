@@ -35,9 +35,9 @@ export default async function ApplicationList() {
   }
 
   return (
-    <div className={"grid grid-cols-4 gap-4 w-full"}>
+    <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full"}>
       {data.jobApplications.map((application) => (
-        <Card key={application.id} className={"w-full"}>
+        <Card key={application.id} fullWidth>
           <CardHeader className={"flex justify-between"}>
             <h2>{application.title}</h2> <Chip color={statusColor(application.status)} >{application.status}</Chip>
           </CardHeader>

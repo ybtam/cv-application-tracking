@@ -9,10 +9,10 @@ export default function HomePage() {
   return (
     <div className={"p-4 flex flex-wrap gap-4"}>
       <h1>Applications</h1>
+      <AddApplicationDrawer/>
       <Suspense fallback={<p>Loading...</p>}>
         <ApplicationList/>
       </Suspense>
-      <AddApplicationDrawer/>
     </div>
   )
 }
