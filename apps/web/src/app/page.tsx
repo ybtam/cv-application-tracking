@@ -1,17 +1,17 @@
-import AddApplicationDrawer from "@/app/_components/add-application-drawer";
-import ApplicationList from "@/app/_components/application-list";
-import {Suspense} from "react";
+import AddApplicationDrawer from '@/app/_components/add-application-drawer'
+import ApplicationList from '@/app/_components/application-list'
+import { Suspense } from 'react'
 
-export const dynamic = "force-dynamic";
-export const revalidate = 5;
+export const dynamic = 'force-dynamic'
+export const revalidate = 5
 
 export default function HomePage() {
   return (
-    <div className={"p-4 flex flex-wrap gap-4"}>
+    <div className={'flex flex-wrap gap-4 p-4'}>
       <h1>Applications</h1>
-      <AddApplicationDrawer/>
+      <AddApplicationDrawer />
       <Suspense fallback={<p>Loading...</p>}>
-        <ApplicationList/>
+        <ApplicationList />
       </Suspense>
     </div>
   )

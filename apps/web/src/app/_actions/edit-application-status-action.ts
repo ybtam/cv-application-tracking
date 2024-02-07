@@ -1,12 +1,14 @@
-"use server"
+'use server'
 
-import {JobApplicationStatus} from "codegen-web/src/graphql";
-import {revalidatePath} from "next/cache";
-import {getClient} from "@/lib/apollo/server-client";
-import {graphql} from "codegen-web";
+import { getClient } from '@/lib/apollo/server-client'
+import { graphql } from 'codegen-web'
+import { JobApplicationStatus } from 'codegen-web/src/graphql'
+import { revalidatePath } from 'next/cache'
 
-export default async function EditApplicationStatusAction(id: string, status: JobApplicationStatus) {
-
+export default async function EditApplicationStatusAction(
+  id: string,
+  status: JobApplicationStatus,
+) {
   try {
     await getClient().mutate({
       mutation: graphql(`
@@ -21,12 +23,12 @@ export default async function EditApplicationStatusAction(id: string, status: Jo
         input: {
           id,
           status,
-        }
-      }
+        },
+      },
     })
-    } catch (e: unknown) {
-      console.error(e);
+  } catch (e: unknown) {
+    console.error(e)
   }
 
-  revalidatePath("/");
+  revalidatePath('/')
 }

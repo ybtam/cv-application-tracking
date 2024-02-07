@@ -1,26 +1,27 @@
-"use server"
+'use server'
 
-import {z} from "zod";
-import {getClient} from "@/lib/apollo/server-client";
-import {graphql} from "codegen-web";
-import {JobApplicationStatus} from "codegen-web/src/graphql";
-import {revalidatePath} from "next/cache";
-import {redirect} from "next/navigation";
-import {ApolloError} from "@apollo/client";
+import { getClient } from '@/lib/apollo/server-client'
+import { ApolloError } from '@apollo/client'
+import { graphql } from 'codegen-web'
+import { JobApplicationStatus } from 'codegen-web/src/graphql'
+import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
+import { z } from 'zod'
 
 export default async function AddApplicationAction(prevData: any, formData: FormData) {
+  const parsedData = z
+    .object({
+      title: z.string({}).min(1),
+      url: z.string().url(),
+    })
+    .safeParse(Object.fromEntries(formData))
 
-  const parsedData = z.object({
-    url: z.string().url(),
-    title: z.string({}).min(1),
-  }).safeParse(Object.fromEntries(formData));
+  if (!parsedData.success) return { fields: parsedData.error.flatten().fieldErrors }
 
-  if (!parsedData.success) return {fields: parsedData.error.flatten().fieldErrors}
-
-  const {url, title} = parsedData.data;
+  const { title, url } = parsedData.data
 
   try {
-    const {data} = await getClient().mutate({
+    const { data } = await getClient().mutate({
       mutation: graphql(`
         mutation AddApplication($input: CreateJobApplicationInput!) {
           createJobApplication(input: $input) {
@@ -30,23 +31,23 @@ export default async function AddApplicationAction(prevData: any, formData: Form
       `),
       variables: {
         input: {
-          url,
           status: JobApplicationStatus.Pending,
-          title
+          title,
+          url,
         },
       },
     })
   } catch (e: unknown) {
     if (e instanceof ApolloError) {
-      const message = e.graphQLErrors.map((error) => {
+      const message = e.graphQLErrors.map(error => {
         return error.message
       })
 
-      return {message: message}
+      return { message: message }
     }
   }
 
-  revalidatePath("/")
+  revalidatePath('/')
 
-  return { status: "success" }
+  return { status: 'success' }
 }

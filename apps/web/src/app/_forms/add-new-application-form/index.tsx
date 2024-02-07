@@ -1,13 +1,13 @@
-"use client"
+'use client'
 
-import {Input} from "@nextui-org/react";
-import SubmitButton from "@/components/form/submit-button";
-import AddApplicationAction from "@/app/_forms/add-new-application-form/action";
-import { useFormState } from "react-dom";
-import {useEffect} from "react";
+import AddApplicationAction from '@/app/_forms/add-new-application-form/action'
+import SubmitButton from '@/components/form/submit-button'
+import { Input } from '@nextui-org/react'
+import { useEffect } from 'react'
+import { useFormState } from 'react-dom'
 
 interface Props {
-  openState: [boolean, (value: (((prevState: boolean) => boolean) | boolean)) => void]
+  openState: [boolean, (value: ((prevState: boolean) => boolean) | boolean) => void]
 }
 
 export default function AddNewApplicationForm({ openState }: Props) {
@@ -21,21 +21,22 @@ export default function AddNewApplicationForm({ openState }: Props) {
   }, [formState])
 
   return (
-    <form action={formAction} className={"flex flex-wrap gap-4 p-4"}>
+    <form action={formAction} className={'flex flex-wrap gap-4 p-4'}>
       <Input
-        name={"title"}
-        label={'Title'}
-        isInvalid={(formState?.fields?.title?.length ?? 0) > 0}
         errorMessage={formState?.fields?.title}
+        isInvalid={(formState?.fields?.title?.length ?? 0) > 0}
+        label={'Title'}
+        name={'title'}
       />
       <Input
-        name={"url"}
-        label={'Url'}
-        isInvalid={(formState?.fields?.url?.length ?? 0) > 0}
         errorMessage={formState?.fields?.url}
+        isInvalid={(formState?.fields?.url?.length ?? 0) > 0}
+        label={'Url'}
+        name={'url'}
       />
-      <SubmitButton label={"Add Application"}/>
-      {formState?.message && formState.message.map((message, index) => <p key={index}>{message}</p>)}
+      <SubmitButton label={'Add Application'} />
+      {formState?.message &&
+        formState.message.map((message, index) => <p key={index}>{message}</p>)}
     </form>
   )
 }

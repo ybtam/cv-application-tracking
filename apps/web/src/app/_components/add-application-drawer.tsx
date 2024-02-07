@@ -1,22 +1,24 @@
-"use client"
+'use client'
 
-import {Button} from "@nextui-org/react";
+import AddNewApplicationForm from '@/app/_forms/add-new-application-form'
 import {
-  Drawer, DrawerClose,
-  DrawerContent, DrawerFooter,
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger
-} from "@/components/ui/drawer";
-import AddNewApplicationForm from "@/app/_forms/add-new-application-form";
-import {useState} from "react";
+  DrawerTrigger,
+} from '@/components/ui/drawer'
+import { Button } from '@nextui-org/react'
+import { useState } from 'react'
 
-export default function AddApplicationDrawer () {
+export default function AddApplicationDrawer() {
   const openState = useState(false)
   const [open, setOpen] = openState
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer onOpenChange={setOpen} open={open}>
       <DrawerTrigger asChild>
         <Button>Add Application</Button>
       </DrawerTrigger>
@@ -24,7 +26,7 @@ export default function AddApplicationDrawer () {
         <DrawerHeader>
           <DrawerTitle>Fill out the details</DrawerTitle>
         </DrawerHeader>
-        <AddNewApplicationForm openState={openState}/>
+        <AddNewApplicationForm openState={openState} />
         <DrawerFooter>
           <DrawerClose asChild>
             <Button>Cancel</Button>
