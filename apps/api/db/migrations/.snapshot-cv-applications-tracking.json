@@ -47,6 +47,15 @@
             "REPLIED"
           ],
           "mappedType": "enum"
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "date",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "date"
         }
       },
       "name": "job_application",
