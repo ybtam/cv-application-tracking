@@ -11,7 +11,7 @@ export class JobApplication {
   id: string = v4();
 
   @Field()
-  @Property()
+  @Property({length: 1024})
   url: string;
 
   @Field()
