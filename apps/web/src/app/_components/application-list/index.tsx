@@ -6,6 +6,7 @@ import {Button, Card, CardBody, CardFooter, CardHeader, Chip} from "@nextui-org/
 import Link from "next/link";
 import {JobApplicationStatus} from "codegen-web/src/graphql";
 import EditStatusButton from "@/app/_components/application-list/edit-status-button";
+import DeleteButton from "@/app/_components/application-list/delete-button";
 
 export default async function ApplicationList() {
   const {data} = await getClient().query({
@@ -44,6 +45,7 @@ export default async function ApplicationList() {
           <CardFooter className={"flex gap-2"}>
             <Button as={Link} href={application.url} target={"_blank"}>View</Button>
             <EditStatusButton currentStatus={application.status} id={application.id} />
+            <DeleteButton id={application.id} />
           </CardFooter>
         </Card>
       ))}

@@ -21,4 +21,8 @@ export class JobApplication {
   @Field(() => JobApplicationStatus)
   @Enum({ items: () => JobApplicationStatus })
   status: JobApplicationStatus;
+
+  @Field(() => Date, {nullable: true })
+  @Property({ type: "date" , nullable: true})
+  deletedAt?: Date;
 }
