@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n        mutation EditApplicationStatus($input: UpdateJobApplicationInput!) {\n          updateJobApplication(input: $input) {\n            id\n            status\n          }\n        }\n      ": types.EditApplicationStatusDocument,
     "\n      query ApplicationsList{\n        jobApplications {\n          id\n          title\n          url\n          status\n        }\n      }\n    ": types.ApplicationsListDocument,
     "\n        mutation AddApplication($input: CreateJobApplicationInput!) {\n          createJobApplication(input: $input) {\n            id\n          }\n        }\n      ": types.AddApplicationDocument,
 };
@@ -31,6 +32,10 @@ const documents = {
  */
 export function graphql(source: string): unknown;
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n        mutation EditApplicationStatus($input: UpdateJobApplicationInput!) {\n          updateJobApplication(input: $input) {\n            id\n            status\n          }\n        }\n      "): (typeof documents)["\n        mutation EditApplicationStatus($input: UpdateJobApplicationInput!) {\n          updateJobApplication(input: $input) {\n            id\n            status\n          }\n        }\n      "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

@@ -42,12 +42,18 @@ export enum JobApplicationStatus {
 export type Mutation = {
   __typename?: 'Mutation';
   createJobApplication: JobApplication;
+  deleteJobApplication: Scalars['Boolean']['output'];
   updateJobApplication: JobApplication;
 };
 
 
 export type MutationCreateJobApplicationArgs = {
   input: CreateJobApplicationInput;
+};
+
+
+export type MutationDeleteJobApplicationArgs = {
+  id: Scalars['String']['input'];
 };
 
 
@@ -62,7 +68,7 @@ export type Query = {
 
 export type UpdateJobApplicationInput = {
   id: Scalars['String']['input'];
-  status: JobApplicationStatus;
-  title: Scalars['String']['input'];
-  url: Scalars['String']['input'];
+  status?: InputMaybe<JobApplicationStatus>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };

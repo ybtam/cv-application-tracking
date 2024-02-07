@@ -14,7 +14,7 @@ export default function EditStatusButton({currentStatus, id}: Props) {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button isDisabled>
+        <Button>
           Edit Status
         </Button>
       </DropdownTrigger>

@@ -6,12 +6,12 @@ export class UpdateJobApplicationInput {
   @Field()
   id: string;
 
-  @Field()
+  @Field({ nullable: true})
   url?: string;
 
-  @Field()
+  @Field({ nullable: true})
   title?: string;
 
-  @Field(() => JobApplicationStatus)
+  @Field(() => JobApplicationStatus, { nullable: true})
   status?: JobApplicationStatus;
 }
