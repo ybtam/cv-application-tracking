@@ -18,6 +18,10 @@ export class JobApplication {
   @Property()
   title: string;
 
+  @Field({nullable: true})
+  @Property({nullable: true})
+  company?: string;
+
   @Field(() => JobApplicationStatus)
   @Enum({ items: () => JobApplicationStatus })
   status: JobApplicationStatus;

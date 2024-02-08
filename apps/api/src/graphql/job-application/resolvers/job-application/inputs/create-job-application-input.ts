@@ -11,4 +11,7 @@ export class CreateJobApplicationInput {
 
   @Field()
   title: string;
+
+  @Field()
+  company: string;
 }

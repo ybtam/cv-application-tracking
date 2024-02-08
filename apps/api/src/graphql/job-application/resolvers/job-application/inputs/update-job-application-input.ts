@@ -14,4 +14,7 @@ export class UpdateJobApplicationInput {
 
   @Field(() => JobApplicationStatus, { nullable: true})
   status?: JobApplicationStatus;
+
+  @Field({ nullable: true})
+  company?: string;
 }

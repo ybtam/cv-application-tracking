@@ -1,10 +1,11 @@
 import {registerEnumType} from "type-graphql";
 
 export enum JobApplicationStatus {
-  APPLIED = 'APPLIED',
+  ACCEPTED = 'ACCEPTED',
   REJECTED = 'REJECTED',
   PENDING = 'PENDING',
   REPLIED = 'REPLIED',
+  CLOSED = 'CLOSED'
 }
 
 registerEnumType(JobApplicationStatus, {

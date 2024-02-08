@@ -8,6 +8,10 @@ export class JobApplicationQueryResolver{
   async jobApplications(@Ctx() {em}: myContext) {
     return await em.find(JobApplication, {
       deletedAt: null
+    }, {
+      orderBy: {
+        status: "DESC"
+      }
     });
   }
 }
