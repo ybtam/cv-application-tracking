@@ -25,7 +25,8 @@ export class JobApplicationMutationResolver {
     const jobApplication = em.create(JobApplication, {
       url: input.url,
       status: input.status,
-      title: input.title
+      title: input.title,
+      company: input.company
     });
     await em.persistAndFlush(jobApplication);
 
@@ -43,6 +44,7 @@ export class JobApplicationMutationResolver {
    if (input.url) jobApplication.url = input.url;
     if (input.status) jobApplication.status = input.status;
     if (input.title) jobApplication.title = input.title;
+    if (input.company) jobApplication.company = input.company;
 
     await em.persistAndFlush(jobApplication);
 

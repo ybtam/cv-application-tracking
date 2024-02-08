@@ -29,6 +29,12 @@ export default function AddNewApplicationForm({ openState }: Props) {
         name={'title'}
       />
       <Input
+        errorMessage={formState?.fields?.company}
+        isInvalid={(formState?.fields?.company?.length ?? 0) > 0}
+        label={'Company'}
+        name={'company'}
+      />
+      <Input
         errorMessage={formState?.fields?.url}
         isInvalid={(formState?.fields?.url?.length ?? 0) > 0}
         label={'Url'}

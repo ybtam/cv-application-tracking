@@ -34,6 +34,15 @@
           "nullable": false,
           "mappedType": "string"
         },
+        "company": {
+          "name": "company",
+          "type": "varchar(255)",
+          "unsigned": false,
+          "autoincrement": false,
+          "primary": false,
+          "nullable": true,
+          "mappedType": "string"
+        },
         "status": {
           "name": "status",
           "type": "text",
@@ -42,10 +51,11 @@
           "primary": false,
           "nullable": false,
           "enumItems": [
-            "APPLIED",
+            "ACCEPTED",
             "REJECTED",
             "PENDING",
-            "REPLIED"
+            "REPLIED",
+            "CLOSED"
           ],
           "mappedType": "enum"
         },

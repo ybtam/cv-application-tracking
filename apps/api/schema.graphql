@@ -4,6 +4,7 @@
 # -----------------------------------------------
 
 input CreateJobApplicationInput {
+  company: String!
   status: JobApplicationStatus!
   title: String!
   url: String!
@@ -15,6 +16,7 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 scalar DateTimeISO
 
 type JobApplication {
+  company: String
   deletedAt: DateTimeISO
   id: String!
   status: JobApplicationStatus!
@@ -23,7 +25,8 @@ type JobApplication {
 }
 
 enum JobApplicationStatus {
-  APPLIED
+  ACCEPTED
+  CLOSED
   PENDING
   REJECTED
   REPLIED
@@ -40,6 +43,7 @@ type Query {
 }
 
 input UpdateJobApplicationInput {
+  company: String
   id: String!
   status: JobApplicationStatus
   title: String

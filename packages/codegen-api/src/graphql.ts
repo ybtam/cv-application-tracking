@@ -18,6 +18,7 @@ export type Scalars = {
 };
 
 export type CreateJobApplicationInput = {
+  company: Scalars['String']['input'];
   status: JobApplicationStatus;
   title: Scalars['String']['input'];
   url: Scalars['String']['input'];
@@ -25,6 +26,7 @@ export type CreateJobApplicationInput = {
 
 export type JobApplication = {
   __typename?: 'JobApplication';
+  company?: Maybe<Scalars['String']['output']>;
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   id: Scalars['String']['output'];
   status: JobApplicationStatus;
@@ -33,7 +35,8 @@ export type JobApplication = {
 };
 
 export enum JobApplicationStatus {
-  Applied = 'APPLIED',
+  Accepted = 'ACCEPTED',
+  Closed = 'CLOSED',
   Pending = 'PENDING',
   Rejected = 'REJECTED',
   Replied = 'REPLIED'
@@ -67,6 +70,7 @@ export type Query = {
 };
 
 export type UpdateJobApplicationInput = {
+  company?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['String']['input'];
   status?: InputMaybe<JobApplicationStatus>;
   title?: InputMaybe<Scalars['String']['input']>;

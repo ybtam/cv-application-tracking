@@ -7,6 +7,7 @@ import { Button, Card, CardBody, CardFooter, CardHeader, Chip } from '@nextui-or
 import { graphql } from 'codegen-web'
 import { JobApplicationStatus } from 'codegen-web/src/graphql'
 import Link from 'next/link'
+import {Table, TableBody, TableCell, TableHead, TableRow} from "@/components/ui/table";
 
 export default async function ApplicationList() {
   const { data } = await getClient().query({
@@ -17,6 +18,7 @@ export default async function ApplicationList() {
           title
           url
           status
+          company
         }
       }
     `),
@@ -24,8 +26,9 @@ export default async function ApplicationList() {
 
   const statusColor = (status: JobApplicationStatus) => {
     switch (status) {
-      case JobApplicationStatus.Applied:
+      case JobApplicationStatus.Accepted:
         return 'primary'
+      case JobApplicationStatus.Closed:
       case JobApplicationStatus.Pending:
         return 'warning'
       case JobApplicationStatus.Rejected:
@@ -36,13 +39,26 @@ export default async function ApplicationList() {
   }
 
   return (
-    <div className={'grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'}>
+    <div className={'grid w-full grid-cols-1 gap-4 lg:grid-cols-4'}>
       {data.jobApplications.map(application => (
         <Card fullWidth key={application.id}>
-          <CardHeader className={'flex justify-between'}>
+          <CardHeader>
             <h2>{application.title}</h2>{' '}
-            <Chip color={statusColor(application.status)}>{application.status}</Chip>
           </CardHeader>
+          <CardBody>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableHead>Status</TableHead>
+                  <TableCell><Chip color={statusColor(application.status)}>{application.status}</Chip></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Company</TableHead>
+                  <TableCell>{application.company ?? '-'}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </CardBody>
           <CardFooter className={'flex gap-2'}>
             <Button as={Link} href={application.url} target={'_blank'}>
               View

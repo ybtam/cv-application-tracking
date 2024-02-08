@@ -15,7 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n        mutation DeleteApplication($id: String!) {\n          deleteJobApplication(id: $id)\n        }\n      ": types.DeleteApplicationDocument,
     "\n        mutation EditApplicationStatus($input: UpdateJobApplicationInput!) {\n          updateJobApplication(input: $input) {\n            id\n            status\n          }\n        }\n      ": types.EditApplicationStatusDocument,
-    "\n      query ApplicationsList {\n        jobApplications {\n          id\n          title\n          url\n          status\n        }\n      }\n    ": types.ApplicationsListDocument,
+    "\n      query ApplicationsList {\n        jobApplications {\n          id\n          title\n          url\n          status\n          company\n        }\n      }\n    ": types.ApplicationsListDocument,
     "\n        mutation AddApplication($input: CreateJobApplicationInput!) {\n          createJobApplication(input: $input) {\n            id\n          }\n        }\n      ": types.AddApplicationDocument,
 };
 
@@ -44,7 +44,7 @@ export function graphql(source: "\n        mutation EditApplicationStatus($input
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n      query ApplicationsList {\n        jobApplications {\n          id\n          title\n          url\n          status\n        }\n      }\n    "): (typeof documents)["\n      query ApplicationsList {\n        jobApplications {\n          id\n          title\n          url\n          status\n        }\n      }\n    "];
+export function graphql(source: "\n      query ApplicationsList {\n        jobApplications {\n          id\n          title\n          url\n          status\n          company\n        }\n      }\n    "): (typeof documents)["\n      query ApplicationsList {\n        jobApplications {\n          id\n          title\n          url\n          status\n          company\n        }\n      }\n    "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

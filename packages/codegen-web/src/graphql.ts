@@ -19,6 +19,7 @@ export type Scalars = {
 };
 
 export type CreateJobApplicationInput = {
+  company: Scalars['String']['input'];
   status: JobApplicationStatus;
   title: Scalars['String']['input'];
   url: Scalars['String']['input'];
@@ -26,6 +27,7 @@ export type CreateJobApplicationInput = {
 
 export type JobApplication = {
   __typename?: 'JobApplication';
+  company?: Maybe<Scalars['String']['output']>;
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   id: Scalars['String']['output'];
   status: JobApplicationStatus;
@@ -34,7 +36,8 @@ export type JobApplication = {
 };
 
 export enum JobApplicationStatus {
-  Applied = 'APPLIED',
+  Accepted = 'ACCEPTED',
+  Closed = 'CLOSED',
   Pending = 'PENDING',
   Rejected = 'REJECTED',
   Replied = 'REPLIED'
@@ -68,6 +71,7 @@ export type Query = {
 };
 
 export type UpdateJobApplicationInput = {
+  company?: InputMaybe<Scalars['String']['input']>;
   id: Scalars['String']['input'];
   status?: InputMaybe<JobApplicationStatus>;
   title?: InputMaybe<Scalars['String']['input']>;
@@ -91,7 +95,7 @@ export type EditApplicationStatusMutation = { __typename?: 'Mutation', updateJob
 export type ApplicationsListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ApplicationsListQuery = { __typename?: 'Query', jobApplications: Array<{ __typename?: 'JobApplication', id: string, title: string, url: string, status: JobApplicationStatus }> };
+export type ApplicationsListQuery = { __typename?: 'Query', jobApplications: Array<{ __typename?: 'JobApplication', id: string, title: string, url: string, status: JobApplicationStatus, company?: string | null }> };
 
 export type AddApplicationMutationVariables = Exact<{
   input: CreateJobApplicationInput;
@@ -103,5 +107,5 @@ export type AddApplicationMutation = { __typename?: 'Mutation', createJobApplica
 
 export const DeleteApplicationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"DeleteApplication"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"deleteJobApplication"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}]}}]} as unknown as DocumentNode<DeleteApplicationMutation, DeleteApplicationMutationVariables>;
 export const EditApplicationStatusDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"EditApplicationStatus"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"UpdateJobApplicationInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateJobApplication"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]} as unknown as DocumentNode<EditApplicationStatusMutation, EditApplicationStatusMutationVariables>;
-export const ApplicationsListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ApplicationsList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"jobApplications"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"status"}}]}}]}}]} as unknown as DocumentNode<ApplicationsListQuery, ApplicationsListQueryVariables>;
+export const ApplicationsListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ApplicationsList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"jobApplications"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"company"}}]}}]}}]} as unknown as DocumentNode<ApplicationsListQuery, ApplicationsListQueryVariables>;
 export const AddApplicationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"AddApplication"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"input"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateJobApplicationInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createJobApplication"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"input"},"value":{"kind":"Variable","name":{"kind":"Name","value":"input"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<AddApplicationMutation, AddApplicationMutationVariables>;
