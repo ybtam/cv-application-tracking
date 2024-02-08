@@ -13,12 +13,13 @@ export default async function AddApplicationAction(prevData: any, formData: Form
     .object({
       title: z.string({}).min(1),
       url: z.string().url(),
+      company: z.string({}).min(1),
     })
     .safeParse(Object.fromEntries(formData))
 
   if (!parsedData.success) return { fields: parsedData.error.flatten().fieldErrors }
 
-  const { title, url } = parsedData.data
+  const { title, url, company } = parsedData.data
 
   try {
     const { data } = await getClient().mutate({
@@ -34,6 +35,7 @@ export default async function AddApplicationAction(prevData: any, formData: Form
           status: JobApplicationStatus.Pending,
           title,
           url,
+          company
         },
       },
     })
