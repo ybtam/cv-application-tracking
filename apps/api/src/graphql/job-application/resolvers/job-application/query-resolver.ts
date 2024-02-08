@@ -10,7 +10,7 @@ export class JobApplicationQueryResolver{
       deletedAt: null
     }, {
       orderBy: {
-        status: "DESC"
+        status: "ASC"
       }
     });
   }
