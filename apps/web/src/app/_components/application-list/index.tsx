@@ -2,12 +2,12 @@
 
 import DeleteButton from '@/app/_components/application-list/delete-button'
 import EditStatusButton from '@/app/_components/application-list/edit-status-button'
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table'
 import { getClient } from '@/lib/apollo/server-client'
 import { Button, Card, CardBody, CardFooter, CardHeader, Chip } from '@nextui-org/react'
 import { graphql } from 'codegen-web'
 import { JobApplicationStatus } from 'codegen-web/src/graphql'
 import Link from 'next/link'
-import {Table, TableBody, TableCell, TableHead, TableRow} from "@/components/ui/table";
 
 export default async function ApplicationList() {
   const { data } = await getClient().query({
@@ -50,7 +50,9 @@ export default async function ApplicationList() {
               <TableBody>
                 <TableRow>
                   <TableHead>Status</TableHead>
-                  <TableCell><Chip color={statusColor(application.status)}>{application.status}</Chip></TableCell>
+                  <TableCell>
+                    <Chip color={statusColor(application.status)}>{application.status}</Chip>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableHead>Company</TableHead>
