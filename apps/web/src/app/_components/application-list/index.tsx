@@ -1,5 +1,3 @@
-'use server'
-
 import DeleteButton from '@/app/_components/application-list/delete-button'
 import EditStatusButton from '@/app/_components/application-list/edit-status-button'
 import { getClient } from '@/lib/apollo/server-client'
